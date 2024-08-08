@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contract\PractionerContract;
 use App\Http\Requests\PractionerRequest;
+use Exception;
 use Illuminate\Http\Request;
 use Satusehat\Integration\OAuth2Client;
 

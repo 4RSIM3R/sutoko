@@ -13,8 +13,18 @@
                 <box-icon class="h-4 w-4 mr-2" name='plus'></box-icon>
                 Add Practioner
             </a>
-
         </div>
+
+        @if ($errors->any())
+            <div class="my-5">
+                @foreach ($errors->all() as $error)
+                    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                        role="alert">
+                        {{ $error }}
+                    </div>
+                @endforeach
+            </div>
+        @endif
 
         <div class="relative overflow-x-auto mt-8">
             <table class="w-full text-sm text-left rtl:text-right">
@@ -79,16 +89,20 @@
 
             <div class="flex justify-center mt-8">
                 <!-- Previous Button -->
-                <a href="#"
-                    class="flex items-center justify-center px-3 h-8 me-3 text-sm font-medium bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700">
-                    <box-icon class="h-4 w-4 mr-2" name='edit'></box-icon>
-                    Prev
-                </a>
-                <a href="#"
-                    class="flex items-center justify-center px-3 h-8 text-sm font-medium bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700">
-                    Next
-                    <box-icon class="h-4 w-4 ml-2" name='edit'></box-icon>
-                </a>
+                @if ($practioner->prev_page)
+                    <a href="{{ route('practioner.index', ['page' => $practioner->prev_page]) }}"
+                        class="flex items-center justify-center px-3 h-8 me-3 text-sm font-medium bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700">
+                        <box-icon class="h-4 w-4 mr-2" name='left-arrow-alt'></box-icon>
+                        Prev
+                    </a>
+                @endif
+                @if ($practioner->next_page)
+                    <a href="{{ route('practioner.index', ['page' => $practioner->next_page]) }}"
+                        class="flex items-center justify-center px-3 h-8 text-sm font-medium bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700">
+                        Next
+                        <box-icon class="h-4 w-4 ml-2" name='right-arrow-alt'></box-icon>
+                    </a>
+                @endif
             </div>
 
         </div>

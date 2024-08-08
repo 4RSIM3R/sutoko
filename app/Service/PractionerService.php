@@ -4,6 +4,7 @@ namespace App\Service;
 
 use App\Contract\PractionerContract;
 use App\Models\Practioner;
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Satusehat\Integration\OAuth2Client;
@@ -28,9 +29,10 @@ class PractionerService extends BaseService implements PractionerContract
 
             [$status, $response] = $this->client->get_by_nik('Practitioner', $params['nik']);
 
-            if ($status != 200) throw new Exception("Invalid response from satusehat api");
-
             $response = json_decode(json_encode($response), true);
+
+            if ($status != 200 && !$response->entry) throw new Exception("Invalid response from satusehat api");
+            if ($response['entry'] == null) throw new Exception("Practioner with NIK {$params['nik']} not found");
 
             $resource = $response['entry'][0]['resource'];
 

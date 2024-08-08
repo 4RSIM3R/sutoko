@@ -48,8 +48,8 @@
                         <span class="sr-only">Toggle sidebar</span>
                     </button>
                     <a href="https://flowbite.com" class="flex items-center justify-between mr-4 w-56">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Lambang_Kabupaten_Sumedang.png" class="mr-3 w-8 h-8"
-                            alt="Flowbite Logo" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Lambang_Kabupaten_Sumedang.png"
+                            class="mr-3 w-8 h-8" alt="Flowbite Logo" />
                     </a>
                     <form action="#" method="GET" class="hidden md:block md:pl-2">
                         <label for="topbar-search" class="sr-only">Search</label>
@@ -118,14 +118,14 @@
                 </form>
                 <ul class="space-y-2">
                     <li>
-                        <a href=""
+                        <a href="{{ route('backoffice.index') }}"
                             class="flex items-center p-2 text-sm font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <box-icon class="h-5 w-5" name="home"></box-icon>
                             <span class="ml-3">Backoffice</span>
                         </a>
                     </li>
                     <li>
-                        <a href=""
+                        <a href="{{ route('practioner.index') }}"
                             class="flex items-center p-2 text-sm font-medium text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <box-icon type='solid' class="h-5 w-5" name='file-doc'></box-icon>
                             <span class="ml-3">Practioner</span>
