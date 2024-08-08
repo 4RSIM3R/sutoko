@@ -22,7 +22,8 @@ class PractionerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'role' => ['required', 'in:doctor,nurse,pharmacist,other'],
+            'nik' => ['required', 'string', 'max:16', 'min:16'],
         ];
     }
 }

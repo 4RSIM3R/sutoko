@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('nik')->unique();
             $table->string('satset_id')->unique();
-            $table->string('name');
-            $table->string('address');
-            $table->string('phone')->nullable();
-            $table->string('email')->nullable();
             $table->enum('role', ['doctor', 'nurse', 'other']);
+            $table->string('name');
+            $table->date('birthdate');
+            $table->enum('gender', ['male', 'female']);
+            $table->string('address')->nullable();
             $table->timestamps();
             $table->index(['id', 'nik', 'satset_id']);
         });
