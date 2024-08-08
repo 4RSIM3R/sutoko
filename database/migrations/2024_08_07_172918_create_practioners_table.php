@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->enum('role', ['doctor', 'nurse', 'other']);
             $table->timestamps();
-            $table->index(['id', 'nik', 'ihs_id']);
+            $table->index(['id', 'nik', 'satset_id']);
         });
     }
 
