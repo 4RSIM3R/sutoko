@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\EncounterRequest;
+use App\Http\Requests\OrganizationRequest;
 use Illuminate\Http\Request;
 
-class EncounterController extends Controller
+class OrganizationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
-        return view('backoffice.encounter.index');
+        return view('backoffice.organization.index');
     }
 
     /**
@@ -20,13 +20,13 @@ class EncounterController extends Controller
      */
     public function create()
     {
-        return view('backoffice.encounter.create');
+        return view('backoffice.organization.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(EncounterRequest $request)
+    public function store(OrganizationRequest $request)
     {
         //
     }
@@ -50,7 +50,7 @@ class EncounterController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(EncounterRequest $request, string $id)
+    public function update(OrganizationRequest $request, string $id)
     {
         //
     }

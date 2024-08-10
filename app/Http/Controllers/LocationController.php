@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LocationRequest;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
@@ -9,9 +10,9 @@ class LocationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        return view('backoffice.location.index');
     }
 
     /**
@@ -19,13 +20,13 @@ class LocationController extends Controller
      */
     public function create()
     {
-        //
+        return view('backoffice.location.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(LocationRequest $request)
     {
         //
     }
@@ -49,7 +50,7 @@ class LocationController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(LocationRequest $request, string $id)
     {
         //
     }
