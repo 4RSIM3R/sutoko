@@ -13,7 +13,12 @@ return new class extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
+            $table->string('satset_id');
+            $table->string('name');
+            $table->string('reference');
+            $table->enum('type', ['bu', 'wi', 'co', 'ro', 've', 'ho', 'ca', 'rd', 'area']);
             $table->timestamps();
+            $table->index(['satset_id', 'type', 'reference']);
         });
     }
 

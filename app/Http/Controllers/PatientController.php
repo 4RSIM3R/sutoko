@@ -10,13 +10,13 @@ class PatientController extends Controller
 
     public function index(Request $request)
     {
-        return view('backoffice.patient.index');
+        return view('patient.index');
     }
 
 
     public function create()
     {
-        return view('backoffice.patient.create');
+        return view('patient.create');
     }
 
 

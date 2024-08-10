@@ -73,13 +73,8 @@
                             <td class="px-6 py-3 flex space-x-2">
                                 <a href="{{ route('practioner.edit', $practioner->id) }}"
                                     class="flex justify-center py-2.5 px-5 text-sm font-medium focus:outline-none bg-white rounded-md border border-gray-200 hover:bg-gray-100 focus:z-10 items-center">
-                                    <box-icon class="h-4 w-4 mr-2" name='edit'></box-icon>
-                                    Edit
-                                </a>
-                                <a href="{{ route('practioner.edit', $practioner->id) }}"
-                                    class="flex justify-center py-2.5 px-5 text-sm font-medium focus:outline-none bg-white rounded-md border border-gray-200 hover:bg-gray-100 focus:z-10 items-center">
-                                    <box-icon class="h-4 w-4 mr-2" name='edit'></box-icon>
-                                    Edit
+                                    <box-icon class="h-4 w-4 mr-2" name='eye'></box-icon>
+                                    Detail
                                 </a>
                             </td>
                     @endforeach
@@ -89,15 +84,15 @@
 
             <div class="flex justify-center mt-8">
                 <!-- Previous Button -->
-                @if ($practioner->prev_page)
-                    <a href="{{ route('practioner.index', ['page' => $practioner->prev_page]) }}"
+                @if ($practioners['prev_page'] != null)
+                    <a href="{{ route('practioner.index', ['page' => $practioner['prev_page']]) }}"
                         class="flex items-center justify-center px-3 h-8 me-3 text-sm font-medium bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700">
                         <box-icon class="h-4 w-4 mr-2" name='left-arrow-alt'></box-icon>
                         Prev
                     </a>
                 @endif
-                @if ($practioner->next_page)
-                    <a href="{{ route('practioner.index', ['page' => $practioner->next_page]) }}"
+                @if ($practioners['next_page'] != null)
+                    <a href="{{ route('practioner.index', ['page' => $practioner['next_page']]) }}"
                         class="flex items-center justify-center px-3 h-8 text-sm font-medium bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700">
                         Next
                         <box-icon class="h-4 w-4 ml-2" name='right-arrow-alt'></box-icon>

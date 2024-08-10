@@ -22,8 +22,8 @@ class LocationRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'identifier' => 'required|string|max:255',
             'name' => 'required|string|max:255',
+            'type' => 'required|string|in:bu,wi,co,ro,ve,ho,ca,rd,area',
         ];
     }
 }

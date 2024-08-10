@@ -12,7 +12,7 @@ class EncounterController extends Controller
      */
     public function index(Request $request)
     {
-        return view('backoffice.encounter.index');
+        return view('encounter.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class EncounterController extends Controller
      */
     public function create()
     {
-        return view('backoffice.encounter.create');
+        return view('encounter.create');
     }
 
     /**

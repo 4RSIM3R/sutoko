@@ -2,62 +2,60 @@
 
 namespace App\Http\Controllers;
 
+use App\Contract\LocationContract;
 use App\Http\Requests\LocationRequest;
+use Exception;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    protected LocationContract $service;
+
+    public function __construct(LocationContract $service)
+    {
+        $this->service = $service;
+    }
+
     public function index(Request $request)
     {
-        return view('backoffice.location.index');
+        $locations = $this->service->all(paginate: true, page: $request->get('page', 1));
+        return view('location.index', compact('locations'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return view('backoffice.location.create');
+        return view('location.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(LocationRequest $request)
     {
-        //
+        $payload = $request->validated();
+        $result = $this->service->create($payload);
+
+
+        if ($result instanceof Exception) {
+            return redirect()->back()->withErrors($result->getMessage());
+        } else {
+            return redirect()->route('location.index');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(LocationRequest $request, string $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //

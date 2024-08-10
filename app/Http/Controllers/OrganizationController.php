@@ -12,7 +12,7 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        return view('backoffice.organization.index');
+        return view('organization.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class OrganizationController extends Controller
      */
     public function create()
     {
-        return view('backoffice.organization.create');
+        return view('organization.create');
     }
 
     /**
