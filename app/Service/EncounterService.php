@@ -73,7 +73,7 @@ class EncounterService extends BaseService implements EncounterContract
             $payload['icd_10'] = $params['icd_10'];
             $payload['icd_9'] = $params['icd_9'];
             $payload['patient_id'] = $patient->id;
-            $payload['practitioner_id'] = $practioner->id;
+            $payload['practioner_id'] = $practioner->id;
             $payload['location_id'] = $location->id;
 
             $model = $this->model->create($payload);
