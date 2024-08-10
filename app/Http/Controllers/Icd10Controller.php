@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Satusehat\Integration\Terminology\Icd10;
 
 class Icd10Controller extends Controller
@@ -13,10 +14,11 @@ class Icd10Controller extends Controller
         $search = $request->get('search');
         $data = Icd10::query()
             ->where('icd10_code', 'like', '%' . $search . '%')
-            ->where('icd10_en', 'like', '%' . $search . '%')
-            ->where('icd10_id', 'like', '%' . $search . '%')
+            ->orWhere('icd10_en', 'like', '%' . $search . '%')
+            ->orWhere('icd10_id', 'like', '%' . $search . '%')
             ->limit(10)
             ->get();
+
         return Response::json($data);
     }
 

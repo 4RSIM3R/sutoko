@@ -39,6 +39,11 @@ class EncounterRequest extends FormRequest
             // 'code' => 'required|string|max:255',
             // 'onset_datetime' => 'required|date_format:Y-m-d H:i:s',
             // 'recorded_datetime' => 'required|date_format:Y-m-d H:i:s',
+            'icd_10' => 'required|string|exists:satusehat_icd10,icd10_code',
+            'icd_9' => 'required|string|exists:satusehat_icd9cm,icd9cm_code',
+            'location_id' => 'required|string|exists:locations,satset_id',
+            'patient_id' => 'required|string|exists:patients,satset_id',
+            'practitioner_id' => 'required|string|exists:practioners,satset_id',
         ];
     }
 }

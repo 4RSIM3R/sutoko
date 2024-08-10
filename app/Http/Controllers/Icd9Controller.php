@@ -14,10 +14,11 @@ class Icd9Controller extends Controller
         $search = $request->get('search');
         $data = Icd9cm::query()
             ->where('icd9cm_code', 'like', '%' . $search . '%')
-            ->where('icd9cm_en', 'like', '%' . $search . '%')
-            ->where('icd9cm_id', 'like', '%' . $search . '%')
+            ->orWhere('icd9cm_en', 'like', '%' . $search . '%')
+            ->orWhere('icd9cm_id', 'like', '%' . $search . '%')
             ->limit(10)
             ->get();
+            
         return Response::json($data);
     }
 

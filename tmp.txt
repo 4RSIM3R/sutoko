@@ -1,0 +1,27 @@
+{#1401 ▼ // app\Service\EncounterService.php:69
+  +"entry": array:2 [▼
+    0 => {#1411 ▼
+      +"response": {#1413 ▼
+        +"etag": "W/"MTcyMzMwMzk2NTc1MTE1NjAwMA""
+        +"lastModified": "2024-08-10T15:32:45.751156+00:00"
+        +"location": "https://api-satusehat.kemkes.go.id/fhir-r4/v1/Encounter/188b4ee9-67fc-4623-a06d-da41eadaea66/_history/MTcyMzMwMzk2NTc1MTE1NjAwMA"
+        +"status": "201 Created"
+        +"resourceType": "Encounter"
+        +"resourceID": "188b4ee9-67fc-4623-a06d-da41eadaea66"
+      }
+    }
+    1 => {#1404 ▼
+      +"response": {#1407 ▼
+        +"etag": "W/"MTcyMzMwMzk2NTc1MTE1NjAwMA""
+        +"lastModified": "2024-08-10T15:32:45.751156+00:00"
+        +"location": "https://api-satusehat.kemkes.go.id/fhir-r4/v1/Condition/b135fb33-6a89-4d3b-aa55-663a504d5412/_history/MTcyMzMwMzk2NTc1MTE1NjAwMA"
+        +"status": "201 Created"
+        +"resourceType": "Condition"
+        +"resourceID": "b135fb33-6a89-4d3b-aa55-663a504d5412"
+      }
+    }
+  ]
+  +"resourceType": "Bundle"
+  +"type": "transaction-response"
+  +"total": 2
+}

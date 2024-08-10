@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Contract\EncounterContract;
 use App\Http\Requests\EncounterRequest;
+use Exception;
 use Illuminate\Http\Request;
 
 class EncounterController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    protected EncounterContract $service;
+
+    public function __construct(EncounterContract $service)
+    {
+        $this->service = $service;
+    }
+
     public function index(Request $request)
     {
         return view('encounter.index');
@@ -23,7 +30,14 @@ class EncounterController extends Controller
 
     public function store(EncounterRequest $request)
     {
-        
+        $payload = $request->validated();
+        $result = $this->service->create($payload);
+
+        if ($result instanceof Exception) {
+            return redirect()->back()->withErrors($result->getMessage());
+        } else {
+            return redirect()->route('encounter.index');
+        }
     }
 
     /**

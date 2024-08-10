@@ -19,6 +19,7 @@ return new class extends Migration
             $table->enum('type', ['bu', 'wi', 'co', 'ro', 've', 'ho', 'ca', 'rd', 'area']);
             $table->timestamps();
             $table->index(['satset_id', 'type', 'reference']);
+            $table->fullText(['name']);
         });
     }
 

@@ -46,7 +46,7 @@ class PatientController extends Controller
         if ($result instanceof Exception) {
             return redirect()->back()->withErrors($result->getMessage());
         } else {
-            return redirect()->route('practioner.index');
+            return redirect()->route('patient.index');
         }
     }
 

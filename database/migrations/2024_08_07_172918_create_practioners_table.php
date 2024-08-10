@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->timestamps();
             $table->index(['id', 'nik', 'satset_id']);
+            $table->fullText(['name']);
         });
     }
 

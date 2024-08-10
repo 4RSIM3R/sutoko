@@ -64,7 +64,7 @@
                                 {{ $practioner->name }}
                             </td>
                             <td class="px-6 py-3">
-                                {{ $practioner->birthdate }}
+                                {{ $practioner->birth_date }}
                             </td>
                             <td class="px-6 py-3">
                                 {{ $practioner->satset_id }}
