@@ -66,7 +66,7 @@ class EncounterService extends BaseService implements EncounterContract
             [$status, $response] = $bundle->post();
             $response = json_decode(json_encode($response), true);
 
-            if ($status != 201 || $status != 200) throw new Exception("Invalid response from satusehat api");
+            if ($status != 200) throw new Exception("Invalid response from satusehat api");
 
             $payload['encounter_id'] = $response['entry'][0]['response']['resourceID'];
             $payload['condition_id'] = $response['entry'][1]['response']['resourceID'];

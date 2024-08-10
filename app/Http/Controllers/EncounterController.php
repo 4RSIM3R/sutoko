@@ -19,7 +19,9 @@ class EncounterController extends Controller
 
     public function index(Request $request)
     {
-        return view('encounter.index');
+        $page = $request->get('page', 1);
+        $encounters = $this->service->all(page: $page, paginate: true, relations: ['patient', 'practioner', 'location']);
+        return view('encounter.index', compact('encounters'));
     }
 
     public function create()
@@ -40,33 +42,21 @@ class EncounterController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(EncounterRequest $request, string $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         //
