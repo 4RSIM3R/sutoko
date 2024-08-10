@@ -60,9 +60,9 @@
                                 {{ $encounter->location->name }}
                             </td>
                             <td class="px-6 py-3">
-                                <ul>
-                                    <li> {{ $encounter->encounter_id }}</li>
-                                    <li> {{ $encounter->condition_id }}</li>
+                                <ul class="text-sm">
+                                    <li> encounter : {{ $encounter->encounter_id }}</li>
+                                    <li> condition : {{ $encounter->condition_id }}</li>
                                 </ul>
                             </td>
 
