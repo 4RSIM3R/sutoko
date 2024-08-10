@@ -20,6 +20,7 @@ class CreateSatusehatIcd10Table extends Migration
             $table->longText('icd10_id')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
+            $table->fullText(['icd10_en', 'icd10_id', 'icd10_code']);
         });
     }
 

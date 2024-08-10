@@ -3,13 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
+use Satusehat\Integration\Terminology\Icd9cm;
 
 class Icd9Controller extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $search = $request->get('search');
+        $data = Icd9cm::query()
+            ->where('icd9cm_code', 'like', '%' . $search . '%')
+            ->where('icd9cm_en', 'like', '%' . $search . '%')
+            ->where('icd9cm_id', 'like', '%' . $search . '%')
+            ->limit(10)
+            ->get();
+        return Response::json($data);
     }
 
 

@@ -20,6 +20,7 @@ class CreateSatusehatIcd9cmTable extends Migration
             $table->longText('icd9cm_id')->nullable();
             $table->boolean('active')->default(true);
             $table->timestamps();
+            $table->fullText(['icd9cm_en', 'icd9cm_id', 'icd9cm_code']);
         });
     }
 
