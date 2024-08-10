@@ -37,7 +37,7 @@ class LocationService extends BaseService implements LocationContract
             [$status, $response] = $location->post();
             $response = json_decode(json_encode($response), true);
 
-            if ($status != 201) throw new Exception("Invalid response from satusehat api");
+            if ($status != 201 || $status != 200) throw new Exception("Invalid response from satusehat api");
 
             $payload['name'] = $response['description'];
             $payload['reference'] = $response['managingOrganization']['reference']; 

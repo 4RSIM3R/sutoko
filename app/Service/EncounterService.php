@@ -8,6 +8,7 @@ use App\Models\Location;
 use App\Models\Patient;
 use App\Models\Practioner;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Satusehat\Integration\FHIR\Condition;
@@ -27,10 +28,8 @@ class EncounterService extends BaseService implements EncounterContract
         $this->client = new OAuth2Client();
     }
 
-
     public function create(array $params, $image = null, ?string $guard = null, ?string $foreignKey = null)
     {
-
 
         try {
             $encounter_id = Str::uuid();
@@ -65,8 +64,22 @@ class EncounterService extends BaseService implements EncounterContract
             $bundle->addCondition($condition);
 
             [$status, $response] = $bundle->post();
+            $response = json_decode(json_encode($response), true);
 
-            dd($status, $response);
+            if ($status != 201 || $status != 200) throw new Exception("Invalid response from satusehat api");
+
+            $payload['encounter_id'] = $response['entry'][0]['response']['resourceID'];
+            $payload['condition_id'] = $response['entry'][1]['response']['resourceID'];
+            $payload['icd_10'] = $params['icd_10'];
+            $payload['icd_9'] = $params['icd_9'];
+            $payload['patient_id'] = $patient->id;
+            $payload['practitioner_id'] = $practioner->id;
+            $payload['location_id'] = $location->id;
+
+            $model = $this->model->create($payload);
+
+            DB::commit();
+            return $model->fresh();
         } catch (Exception $exception) {
             DB::rollBack();
             return $exception;
