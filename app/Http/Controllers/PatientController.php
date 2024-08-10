@@ -6,6 +6,7 @@ use App\Contract\PatientContract;
 use App\Http\Requests\PatientRequest;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class PatientController extends Controller
 {
@@ -24,11 +25,18 @@ class PatientController extends Controller
         return view('patient.index', compact('patients'));
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->query('search');
+        $where = [["name", "like", "%{$search}%"]];
+        $patients = $this->service->all(whereConditions: $where);
+        return Response::json($patients);
+    }
+
     public function create()
     {
         return view('patient.form');
     }
-
 
     public function store(PatientRequest $request)
     {

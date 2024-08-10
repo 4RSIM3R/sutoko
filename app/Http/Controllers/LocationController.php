@@ -6,6 +6,7 @@ use App\Contract\LocationContract;
 use App\Http\Requests\LocationRequest;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class LocationController extends Controller
 {
@@ -21,6 +22,14 @@ class LocationController extends Controller
     {
         $locations = $this->service->all(paginate: true, page: $request->get('page', 1));
         return view('location.index', compact('locations'));
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->query('search');
+        $where = [["name", "like", "%{$search}%"]];
+        $patients = $this->service->all(whereConditions: $where);
+        return Response::json($patients);
     }
 
     public function create()

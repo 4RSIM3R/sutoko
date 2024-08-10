@@ -15,20 +15,15 @@ class EncounterController extends Controller
         return view('encounter.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        return view('encounter.create');
+        return view('encounter.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(EncounterRequest $request)
     {
-        //
+        
     }
 
     /**

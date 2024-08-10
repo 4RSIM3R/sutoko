@@ -6,6 +6,7 @@ use App\Contract\PractionerContract;
 use App\Http\Requests\PractionerRequest;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Satusehat\Integration\OAuth2Client;
 
 class PractionerController extends Controller
@@ -23,6 +24,14 @@ class PractionerController extends Controller
         $page = $request->get('page', 1);
         $practioners = $this->service->all(paginate: true, page: $page);
         return view('practioner.index', compact('practioners'));
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->query('search');
+        $where = [["name", "like", "%{$search}%"]];
+        $patients = $this->service->all(whereConditions: $where);
+        return Response::json($patients);
     }
 
     public function create()
