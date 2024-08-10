@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('satset_id')->unique();
             $table->enum('role', ['doctor', 'nurse', 'other']);
             $table->string('name');
-            $table->date('birthdate');
+            $table->date('birth_date');
             $table->enum('gender', ['male', 'female']);
             $table->string('address')->nullable();
             $table->timestamps();

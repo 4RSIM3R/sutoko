@@ -2,25 +2,45 @@
 
 namespace App\Http\Controllers;
 
+use App\Contract\PatientContract;
 use App\Http\Requests\PatientRequest;
+use Exception;
 use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
 
-    public function index(Request $request)
+    protected PatientContract $service;
+
+    public function __construct(PatientContract $service)
     {
-        return view('patient.index');
+        $this->service = $service;
     }
 
+    public function index(Request $request)
+    {
+        $page = $request->query('page', 1);
+        $patients = $this->service->all(paginate: true, page: $page);
+        return view('patient.index', compact('patients'));
+    }
 
     public function create()
     {
-        return view('patient.create');
+        return view('patient.form');
     }
 
 
-    public function store(PatientRequest $request) {}
+    public function store(PatientRequest $request)
+    {
+        $payload = $request->validated();
+        $result = $this->service->create($payload);
+
+        if ($result instanceof Exception) {
+            return redirect()->back()->withErrors($result->getMessage());
+        } else {
+            return redirect()->route('practioner.index');
+        }
+    }
 
 
     public function show(string $id)

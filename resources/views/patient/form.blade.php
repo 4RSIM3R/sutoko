@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <form class="flex flex-col space-y-4" action="{{ route('practioner.store') }}" method="post">
+    <form class="flex flex-col space-y-4" action="{{ route('patient.store') }}" method="post">
         @csrf
         <div>
-            <h1 class="text-xl font-semibold">Form Practioner</h1>
-            <p class="text-sm text-gray-400 mt-1">Add new practioner</p>
+            <h1 class="text-xl font-semibold">Form Patient</h1>
+            <p class="text-sm text-gray-400 mt-1">Add new patient</p>
         </div>
 
         @if ($errors->any())
@@ -34,19 +34,44 @@
         </div>
 
         <div class="mb-5">
-            <label for="role" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
-            <select id="role" name="role"
+            <label for="birth_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Birth Date</label>
+            <input type="date" id="birth_date" name="birth_date"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
-                placeholder="Role" required>
-                <option value="doctor">Doctor</option>
-                <option value="nurse">Nurse</option>
-                <option value="pharmacist">Pharmacist</option>
-                <option value="other">Other</option>
-            </select>
-            @error('roles')
+                placeholder="Birth Date" type="birth_date" required />
+            @error('birth_date')
                 <div class="mt-2">
                     <div class="text-sm text-red-600">
-                        {{ $errors->first('nik') }}
+                        {{ $errors->first('birth_date') }}
+                    </div>
+                </div>
+            @enderror
+        </div>
+
+        <div class="mb-5">
+            <label for="gender" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
+            <select id="gender" name="gender"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+                placeholder="Gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            @error('gender')
+                <div class="mt-2">
+                    <div class="text-sm text-red-600">
+                        {{ $errors->first('gender') }}
+                    </div>
+                </div>
+            @enderror
+        </div>
+        <div class="mb-5">
+            <label for="address" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+            <textarea type="text" id="address" name="address"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-green-500 focus:border-green-500 block w-full p-2.5"
+                placeholder="Address" type="address" required></textarea>
+            @error('address')
+                <div class="mt-2">
+                    <div class="text-sm text-red-600">
+                        {{ $errors->first('address') }}
                     </div>
                 </div>
             @enderror

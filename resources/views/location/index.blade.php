@@ -45,7 +45,6 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     @foreach ($locations['data'] as $location)
                         <tr class="bg-white border-b">
                             <td class="px-6 py-3 font-medium whitespace-nowrap">

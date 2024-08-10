@@ -24,11 +24,27 @@ class PatientService extends BaseService implements PatientContract
     {
 
         try {
-            
+            DB::beginTransaction();
+
+            [$status, $response] = $this->client->get_by_nik('Patient', $params['nik']);
+
+            $response = json_decode(json_encode($response), true);
+
+            if ($status != 200 && !$response->entry) throw new Exception("Invalid response from satusehat api");
+            if ($response['entry'] == null) throw new Exception("Patient with NIK {$params['nik']} not found");
+
+            $resource = $response['entry'][0]['resource'];
+
+            $params['satset_id'] =  $resource['id'];
+            $params['name'] = $resource['name'][0]['text'];
+
+            $model = $this->model->create($params);
+
+            DB::commit();
+            return $model->fresh();
         } catch (Exception $exception) {
             DB::rollBack();
             return $exception;
         }
     }
-
 }

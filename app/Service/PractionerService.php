@@ -24,7 +24,6 @@ class PractionerService extends BaseService implements PractionerContract
     public function create(array $params, $image = null, ?string $guard = null, ?string $foreignKey = null)
     {
         try {
-
             DB::beginTransaction();
 
             [$status, $response] = $this->client->get_by_nik('Practitioner', $params['nik']);
@@ -38,7 +37,7 @@ class PractionerService extends BaseService implements PractionerContract
 
             $params['satset_id'] =  $resource['id'];
             $params['name'] = $resource['name'][0]['text'];
-            $params['birthdate'] = $resource['birthDate'];
+            $params['birth_date'] = $resource['birthDate'];
             $params['gender'] = $resource['gender'];
             $params['address'] = sprintf('%s, %s', $resource['address'][0]['line'][0], $resource['address'][0]['city']);
 
