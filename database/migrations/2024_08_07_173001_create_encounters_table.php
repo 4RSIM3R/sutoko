@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('icd_10');
             $table->string('icd_9');
             $table->timestamps();
-            $table->index(['encounter_id', 'condition_id', 'patient_id', 'practioner_id'. 'location_id']);
+            $table->index(['patient_id', 'practioner_id', 'location_id']);
         });
     }
 
