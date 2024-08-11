@@ -35,6 +35,12 @@ Sutoko is an intuitive and straightforward interface designed for seamless integ
      DB_DATABASE=sutoko
      DB_USERNAME=root
      DB_PASSWORD=your_password_here
+
+    SATUSEHAT_ENV=PROD
+    SATUSEHAT_BASE_URL_PROD=https://api-satusehat.kemkes.go.id
+    CLIENTID_PROD=CLIENT_ID
+    CLIENTSECRET_PROD=CLIENT_SECRET
+    ORGID_PROD=ORG_ID
      ```
 
    - **Step 5: Generate the Application Key**
