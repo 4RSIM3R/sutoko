@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('clinical_impressions', function (Blueprint $table) {
+        Schema::create('diagnoses', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Encounter::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignIdFor(Patient::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('clinical_impressions');
+        Schema::dropIfExists('diagnoses');
     }
 };

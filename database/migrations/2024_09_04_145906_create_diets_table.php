@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Encounter;
+use App\Models\Patient;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('diets', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(Encounter::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignIdFor(Patient::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }
